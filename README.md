@@ -1,1 +1,1 @@
-# adventofcode2022rust
+# adventofcode2022
