@@ -11,7 +11,7 @@ where P: AsRef<Path>, {
 
 fn top1_calories(input: &str) -> u32 {
     let lines = read_lines(input)
-        .unwrap_or_else(|_| panic!("File '{input}'should be accesible"));
+        .unwrap_or_else(|_| panic!("File '{input}' should be accesible"));
 
     let mut max_calories = 0;
     let mut sum_calories = 0;
@@ -33,7 +33,7 @@ fn top1_calories(input: &str) -> u32 {
 
 fn top3_calories(input: &str) -> u32 {
     let lines = read_lines(input)
-        .unwrap_or_else(|_| panic!("File '{input}'should be accesible"));
+        .unwrap_or_else(|_| panic!("File '{input}' should be accesible"));
 
     let mut max_calories = [0,0,0];
     let mut sum_calories = 0;
