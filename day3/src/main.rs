@@ -97,7 +97,7 @@ fn main() {
     println!("Starting execution!\n");
     let start = Instant::now();
 
-    let input = "../input.txt";
+    let input = "./input.txt";
     
     let priorities = get_priorities(input);
     let group_priorities = get_group_priorities(input);
