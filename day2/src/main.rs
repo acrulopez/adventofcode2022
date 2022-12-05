@@ -68,7 +68,7 @@ fn main() {
     println!("Starting execution!\n");
     let start = Instant::now();
 
-    let input = "../input.txt";
+    let input = "./input.txt";
     
     let tournament_score = get_tournament_score(input);
     let real_tournament_score = get_real_tournament_score(input);

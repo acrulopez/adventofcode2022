@@ -71,7 +71,7 @@ fn main() {
     println!("Starting execution!\n");
     let start = Instant::now();
 
-    let input = "../input.txt";
+    let input = "./input.txt";
     
     let max_calories = top1_calories(input);
     let max3_calories = top3_calories(input);
