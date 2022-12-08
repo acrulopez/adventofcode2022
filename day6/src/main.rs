@@ -48,7 +48,6 @@ fn get_marker_idx(input: &str, distinct_chars:isize) -> u32 {
     0
 }
 
-
 fn main() {
     println!("Starting execution!\n");
     let start = Instant::now();
