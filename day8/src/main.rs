@@ -113,6 +113,86 @@ fn get_visible_trees(input: &str) -> u32 {
     
 }
 
+fn calculate_visible_trees_from(tree_matrix: &Vec<Vec<u8>>, x:usize, y:usize) -> u32 {
+    let len_x = tree_matrix.len();
+    let len_y = tree_matrix[0].len();
+
+    let mut scenic_score = 1;
+    let mut visible_trees;
+    let tree_height = tree_matrix[x][y];
+
+    if x==1 && y ==3 {
+        println!("A");
+    }
+
+    // Going right
+    visible_trees=0;
+    for j in y+1..len_y {
+        visible_trees += 1;
+        if tree_matrix[x][j] >= tree_height {
+            break;
+        }
+    }
+    scenic_score *= visible_trees;
+
+    // Going left
+    visible_trees=0;
+    for j in (0..y).rev() {
+        visible_trees += 1;
+        if tree_matrix[x][j] >= tree_height {
+            break;
+        }
+    }
+    scenic_score *= visible_trees;
+
+    // Going bottom
+    visible_trees=0;
+    for i in x+1..len_x {
+        visible_trees += 1;
+        if tree_matrix[i][y] >= tree_height {
+            break;
+        }
+    }
+    scenic_score *= visible_trees;
+
+    // Going top
+    visible_trees=0;
+    for i in (0..x).rev() {
+        visible_trees += 1;
+        if tree_matrix[i][y] >= tree_height {
+            break;
+        }
+    }
+    scenic_score *= visible_trees;
+
+    scenic_score
+    
+}
+
+fn _highest_scenic(tree_matrix: &Vec<Vec<u8>>) -> u32 {
+
+    let mut n_trees_visible;
+    let mut max_trees_visible = 0;
+
+    for i in 0..tree_matrix.len() {
+        for j in 0..tree_matrix.len() {
+            n_trees_visible = calculate_visible_trees_from(tree_matrix, i, j);
+            if n_trees_visible > max_trees_visible {max_trees_visible = n_trees_visible}
+        }
+    }
+
+
+    max_trees_visible
+}
+
+fn highest_scenic(input: &str) -> u32 {
+
+    let tree_matrix = parse_input(input);
+
+    return _highest_scenic(&tree_matrix);
+    
+}
+
 
 fn main() {
     println!("Starting execution!\n");
@@ -121,8 +201,10 @@ fn main() {
     let input = "./input.txt";
     
     let visible_trees = get_visible_trees(input);
+    let n_highest_scenic = highest_scenic(input);
 
     println!("The number of visibles trees is {visible_trees}");
+    println!("The highest scenic score is: {n_highest_scenic}");
 
     let duration = start.elapsed();
     println!("\nTime elapsed is: {:?}", duration);
