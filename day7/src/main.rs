@@ -9,20 +9,20 @@ impl Default for LocalFolder {
             files: Vec::<LocalFile>::new(),
             folders: Vec::<usize>::new(),
             parent_folder: None,
-            name: "/".to_string(),
+            // name: "/".to_string(),
         }
     }
 }
 
 struct LocalFile {
     size: u32,
-    name: String
+    // name: String
 }
 struct LocalFolder {
     parent_folder: Option<usize>,
     files: Vec<LocalFile>,
     folders: Vec<usize>,
-    name: String
+    // name: String
 }
 
 fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
@@ -41,7 +41,7 @@ fn get_or_create_folder(folder_vec: &mut Vec<LocalFolder>, current_folder: usize
         _ => {
             let new_folder = LocalFolder {
                 parent_folder: Some(current_folder), 
-                name: folder_name.to_string(),
+                // name: folder_name.to_string(),
                 ..Default::default()
             };
             (*folder_vec).push(new_folder);
@@ -76,7 +76,8 @@ fn parse_input(input: &str) -> Vec<LocalFolder>  {
                     folders[current_folder].files.push(
                         LocalFile { 
                             size: number.parse().unwrap(), 
-                            name: splitted_str[1].to_string() }
+                            // name: splitted_str[1].to_string()
+                        }
                     )
                 }
             }
